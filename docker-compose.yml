@@ -1,0 +1,15 @@
+services:
+  surya-kavach:
+    build: .
+    container_name: surya-kavach
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data            # raw/, processed/, and the SQLite DB persist here
+    environment:
+      SOLARFLARE_DATA_DIR: /data
+      SOLARFLARE_AUTO_INGEST: "1"
+      SOLARFLARE_CHECK_INTERVAL: "60"
+      # SOLARFLARE_API_KEY: "change-me"        # uncomment to require an API key
+      # SOLARFLARE_WEBHOOK_URL: "https://hooks.slack.com/services/..."
+    restart: unless-stopped

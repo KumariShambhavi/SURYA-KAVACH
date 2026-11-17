@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Data & artifacts (large / generated)
+data/raw/
+data/processed/
+data/incoming/
+data/external/
+*.db
+*.db-wal
+*.db-shm
+
+# outputs/: ignore the generated CSVs + summaries, but DO commit the trained model
+# so teammates can `git pull` the latest model instead of re-training it.
+# (See Developer Guide §17 — Team / GitHub workflow. The model is small (~1 MB);
+#  the data that produced it is shared separately, never through Git.)
+outputs/*
+!outputs/forecaster_model.joblib
+
+# Raw PRADAN downloads sitting in the project root
+AL1_SLX_*.zip
+HLS_*.zip
+
+# Frontend — NOTE: frontend/dist/ IS the dashboard (hand-built, vendored libs); it is
+# committed on purpose so teammates get a working UI with no npm/build step.
+frontend/node_modules/
+frontend/.vite/
+
+# Env / secrets
+.env
+.env.local
+
+# OS
+Thumbs.db
+.DS_Store
